@@ -2,27 +2,31 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class LoginPage extends Component {
+  login = (e)=> {
+    e.preventDefault()
+  } 
+
   render() {
-    console.log('THIS.PROPS: ', this.props)
     return (
       <div>
         <h1>Please Log in:</h1>
-        <form>
-          <select name='User list'>
-            {this.props.userIds.map((id)=> {
-              return <option key={ id }>{ id }</option>
+        <form onSubmit={ this.login }>
+          <select name='User list' id='userList'>
+            {this.props.users.map((user)=> {
+              return <option value={ user.id } key={ user.id } >{ user.id }</option>
             })}
           </select>
+          <button>Login</button>
         </form>
       </div>
     )
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    userIds: Object.keys(users),
-    users
+    users: Object.values(users),
+    authedUser
   }
 }
 
