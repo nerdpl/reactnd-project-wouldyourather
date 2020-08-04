@@ -7,9 +7,15 @@ class Questions extends Component {
     return (
       <div>
         QUESTIONS:
-        {this.props.questionsIds.map((q)=> {
-          return <Question id={q} />
-        })}
+        <ul>
+          {this.props.questionsIds.map((q)=> {
+            return (
+              <li key={ q }>
+                <Question id={q} />
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }

@@ -14,9 +14,7 @@ class LeaderBoard extends Component {
         users[i].avatarURL
       ])
     }
-    return data.sort((a, b)=> {
-      return b[3]-a[3]
-    })
+    return data.sort((a, b)=> { return b[3] - a[3] })
   }
 
   render() {
@@ -25,8 +23,8 @@ class LeaderBoard extends Component {
         <ol>
           {this.sortIt(this.props.users).map((user)=> {
             return (
-              <li>
-                <img src={ user[4] } width='100' height='100' />
+              <li key={ user[0] }>
+                <img alt='avatar' src={ user[4] } width='100' height='100' />
                 <p><b>User: { user[0] }</b></p>
                 <p>Created: { user[1] }</p>
                 <p>Answered: { user[2] }</p>
