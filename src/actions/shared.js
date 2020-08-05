@@ -1,25 +1,26 @@
 import { _getUsers, _getQuestions } from '../utils/_DATA'
 import { getUsers } from './users'
 import { getQuestions } from './questions'
-import { setAuthedUser } from './authedUser'
-
-const AUTHED_USER = 'sarahedo'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
 export function handleGetUsers() {
   return (dispatch)=> {
+    dispatch(showLoading())
     return _getUsers()
       .then((users)=> {
         dispatch(getUsers(users))
-        dispatch(setAuthedUser(AUTHED_USER))
+        dispatch(hideLoading())
       })
   }
 }
 
 export function handleGetQuestions() {
   return (dispatch)=> {
+    dispatch(showLoading())
     return _getQuestions()
       .then((questions)=> {
         dispatch(getQuestions(questions))
+        dispatch(hideLoading())
       })
   }
 }
