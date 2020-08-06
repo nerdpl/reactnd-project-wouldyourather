@@ -1,22 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class Question extends Component {
+  viewQuestion = (e, id)=> {
+    e.preventDefault()
+    this.props.history.push(`/question/${id}`)
+  }
+
   render() {
     const { question, users, authedUser } = this.props
 
     return (
-      <Link to={ `/question/${ question.id }` } className='question'>
+      <div>
         { question.author } asks:
         <div>
           <img src={ users[authedUser].avatarURL } alt='avatar' width='100' height='100' />
           <p>Would you rather:</p>
-          <div>{ this.props.answered === true && 'ANSWERED' }</div> 
-          <p>A) { question.optionOne.text }</p>
-          <p>B) { question.optionTwo.text }</p>
+          <p>{ question.optionOne.text }</p>
+          <p>OR</p>
+          <p>{ question.optionTwo.text }</p>    
+          { (this.props.answered === true) 
+            ? (<button onClick={(e) => this.viewQuestion(e, question.id)}>View results</button>)
+            : (<button onClick={(e) => this.viewQuestion(e, question.id)}>Answer</button>)
+          } 
         </div>
-      </Link>
+      </div>
     )
   }
 }

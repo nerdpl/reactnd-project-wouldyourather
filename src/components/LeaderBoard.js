@@ -38,9 +38,10 @@ class LeaderBoard extends Component {
   }
 }
 
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    users: Object.values(users)
+    users: Object.values(users),
+    authedUser
   }
 }
 
