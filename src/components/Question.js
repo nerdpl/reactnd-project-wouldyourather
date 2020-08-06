@@ -9,13 +9,13 @@ class Question extends Component {
   }
 
   render() {
-    const { question, users, authedUser } = this.props
+    const { question, users } = this.props
 
     return (
       <div>
         { question.author } asks:
         <div>
-          <img src={ users[authedUser].avatarURL } alt='avatar' width='100' height='100' />
+          <img src={ users[question.author].avatarURL } alt='avatar' width='100' height='100' />
           <p>Would you rather:</p>
           <p>{ question.optionOne.text }</p>
           <p>OR</p>

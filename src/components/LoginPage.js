@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class LoginPage extends Component {
   login = (e)=> {
     e.preventDefault()
+    const selectedUser = document.getElementById('userList').selectedIndex
+    this.props.dispatch(setAuthedUser(this.props.users[selectedUser].id))
   } 
 
   render() {
@@ -11,12 +14,12 @@ class LoginPage extends Component {
       <div>
         <h1>Please Log in:</h1>
         <form onSubmit={ this.login }>
-          <select name='User list' id='userList'>
+          <select id='userList' name='User list'>
             {this.props.users.map((user)=> {
               return <option value={ user.id } key={ user.id } >{ user.id }</option>
             })}
           </select>
-          <button>Login</button>
+          <button onClick={(e) => this.login(e)}>Login</button>
         </form>
       </div>
     )
