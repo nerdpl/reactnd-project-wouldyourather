@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Fragment>
-          { this.props.authedUser !== '' 
+          { (this.props.authedUser !== '' && this.props.authedUser !== null)
             ? ( <div>
           <LoadingBar />
           <Menu />

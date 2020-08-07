@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
 
 class ViewQuestion extends Component {
+
   render() {
     const { users, authedUser, questions } = this.props
     const id = this.props.match.params.id
