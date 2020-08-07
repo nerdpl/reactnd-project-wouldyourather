@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAnswerQuestion } from '../actions/shared'
 
 class ViewQuestion extends Component {
+
+  handleAnswer = (e, qid)=> {
+    e.preventDefault()
+    const option1 = document.getElementById('option1').checked
+    const option2 = document.getElementById('option2').checked
+    let selectedOpt = null
+    option1 ? selectedOpt = 'optionOne' : (option2 ? selectedOpt = 'optionTwo' : selectedOpt = null)
+    const question = { 
+      authedUser: this.props.authedUser, 
+      qid, 
+      answer: selectedOpt }
+    handleAnswerQuestion(question)
+  }
 
   render() {
     const { users, authedUser, questions } = this.props
@@ -25,9 +39,12 @@ class ViewQuestion extends Component {
                 ({ question.optionTwo.votes.length } vote{ (question.optionTwo.votes.length > 1 || question.optionTwo.votes.length === 0) && 's' } out of { question.optionOne.votes.length + question.optionTwo.votes.length })</p>
             </div>)
             : (<div>
-              <p>{ question.optionOne.text }</p>
-              <p>OR</p>
-              <p>{ question.optionTwo.text }</p>    
+              <form onSubmit={ (e)=> this.handleAnswer(e, id) }>
+                <label><input id='option1' type='radio' name='question' />{ question.optionOne.text }</label>
+                <p>OR</p>
+                <label><input id='option2' type='radio' name='question' />{ question.optionTwo.text }</label>
+                <p><button>Submit answer</button></p>
+              </form>
             </div>)
           } 
         </div>

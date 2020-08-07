@@ -15,8 +15,9 @@ class Questions extends Component {
   render() {
     return (
       <ul>{ (this.props.answered === true) ? 'Your answered questions: ' : 'Unanswered questions: ' }
-        { this.props.questionsIds.filter((q)=> { return this.checkQuestion(this.props.authedUser, this.props.questions[q]) }).map((q)=> {
-          return <li key={ q }><Question id={ q } answered={ this.props.answered } /></li>
+        { this.props.questionsIds
+          .filter((q)=> { return this.checkQuestion(this.props.authedUser, this.props.questions[q]) })
+          .map((q)=> { return <li key={ q }><Question id={ q } answered={ this.props.answered } /></li>
         })}
       </ul>
     )

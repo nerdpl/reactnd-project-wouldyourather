@@ -1,6 +1,6 @@
-import { _getUsers, _getQuestions } from '../utils/_DATA'
+import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../utils/_DATA'
 import { getUsers } from './users'
-import { getQuestions } from './questions'
+import { getQuestions, answerQuestion, addQuestion } from './questions'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export function handleGetUsers() {
@@ -22,5 +22,25 @@ export function handleGetQuestions() {
         dispatch(getQuestions(questions))
         dispatch(hideLoading())
       })
+  }
+}
+
+export function handleAnswerQuestion(question) {
+  return (dispatch)=> {
+    return _saveQuestionAnswer (question)
+      .then((question)=> {
+        dispatch(answerQuestion(question))
+      })
+      .catch(()=> alert('Error. Please try again.'))
+  }
+}
+
+export function handleAddQuestion(question) {
+  return (dispatch)=> {
+    return _saveQuestion(question)
+      .then((question)=> {
+        dispatch(addQuestion(question))
+      })
+      .catch(()=> alert('Error. Please try again.'))
   }
 }
