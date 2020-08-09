@@ -12,6 +12,7 @@ class NewQuestion extends Component {
       optionOneText,
       optionTwoText
     }
+    console.log(question)
     handleAddQuestion(question)
   }
 

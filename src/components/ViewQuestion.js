@@ -10,11 +10,11 @@ class ViewQuestion extends Component {
     const option2 = document.getElementById('option2').checked
     let selectedOpt = null
     option1 ? selectedOpt = 'optionOne' : (option2 ? selectedOpt = 'optionTwo' : selectedOpt = null)
-    const question = { 
+    const answer = { 
       authedUser: this.props.authedUser, 
       qid, 
       answer: selectedOpt }
-    handleAnswerQuestion(question)
+    handleAnswerQuestion(answer)
   }
 
   render() {
@@ -27,7 +27,7 @@ class ViewQuestion extends Component {
       <div>
         { question.author } asks:
         <div>
-          <img src={ users[authedUser].avatarURL } alt='avatar' width='100' height='100' />
+          <img src={ users[question.author].avatarURL } alt='avatar' width='100' height='100' />
           <p>Would you rather:</p>
           { (answered === true) 
             ? (<div>
