@@ -10,7 +10,7 @@ class Menu extends Component {
   } 
 
   render() {
-    const { user, authedUser } = this.props
+    const { user } = this.props
     
     return (
       <nav className='menu'>
@@ -23,7 +23,7 @@ class Menu extends Component {
         <NavLink to='/leaderboard' exact activeClassName='active'>
           LeaderBoard
         </NavLink>
-        Hello, { authedUser } <img src={ user.avatarURL } alt='avatar' width='15' height='15' />
+        <p>Hello, { user.name } <img src={ user.avatarURL } alt='avatar' width='20' height='20' /></p>
         <button onClick={(e) => this.logout(e)}>Logout</button>
       </nav>
     )
@@ -33,7 +33,6 @@ class Menu extends Component {
 function mapStateToProps({ authedUser, users }) {
   const user = users[authedUser]
   return {
-    authedUser,
     user
   }
 }

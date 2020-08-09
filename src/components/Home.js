@@ -15,15 +15,18 @@ class Home extends Component {
   render() {
     return (
       <div>
-        QUESTIONS:
-        <button type='button' disabled={ !this.state.answered } onClick={ this.toggleTab }>
-          UNANSWERED QUESTION
-        </button>
-        <button type='button' disabled={ this.state.answered } onClick={ this.toggleTab }>
-          ANSWERED QUESTIONS
-        </button>
-        {this.state.answered === true && <Questions answered={ true } />}
-        {this.state.answered === false && <Questions answered={ false } />}
+        <div className='ans-unans'>
+          <button type='button' disabled={ !this.state.answered } onClick={ this.toggleTab }>
+            UNANSWERED QUESTION
+          </button>
+          <button type='button' disabled={ this.state.answered } onClick={ this.toggleTab }>
+            ANSWERED QUESTIONS
+          </button>
+        </div>
+        <div className='q-list'>
+          {this.state.answered === true && <Questions answered={ true } />}
+          {this.state.answered === false && <Questions answered={ false } />}
+        </div>
       </div>
     )
   }

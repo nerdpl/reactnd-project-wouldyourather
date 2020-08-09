@@ -25,7 +25,7 @@ class ViewQuestion extends Component {
 
     return (
       <div>
-        { question.author } asks:
+        { users[question.author].name } asks:
         <div>
           <img src={ users[question.author].avatarURL } alt='avatar' width='100' height='100' />
           <p>Would you rather:</p>

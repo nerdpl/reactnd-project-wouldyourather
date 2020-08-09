@@ -11,8 +11,9 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Please Log in:</h1>
+      <div className='centered'>
+        <h1>Welcome to WOULD YOU RATHER App!</h1>
+        <h2>Please Log in:</h2>
         <form onSubmit={ this.login }>
           <select id='userList' name='User list'>
             {this.props.users.map((user)=> {
