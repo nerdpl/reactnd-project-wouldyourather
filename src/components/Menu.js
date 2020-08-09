@@ -11,7 +11,6 @@ class Menu extends Component {
 
   render() {
     const { user, authedUser } = this.props
-    console.log(this.props)
     
     return (
       <nav className='menu'>
@@ -24,7 +23,7 @@ class Menu extends Component {
         <NavLink to='/leaderboard' exact activeClassName='active'>
           LeaderBoard
         </NavLink>
-        Hello, { authedUser } <img src='' alt='avatar' width='10' height='10' />
+        Hello, { authedUser } <img src={ user.avatarURL } alt='avatar' width='15' height='15' />
         <button onClick={(e) => this.logout(e)}>Logout</button>
       </nav>
     )
