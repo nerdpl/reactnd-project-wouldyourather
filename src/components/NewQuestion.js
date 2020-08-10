@@ -13,7 +13,7 @@ class NewQuestion extends Component {
       optionTwoText
     }
     console.log(question)
-    handleAddQuestion(question)
+    this.props.dispatch(handleAddQuestion(question))
   }
 
   render() {

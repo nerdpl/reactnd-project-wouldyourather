@@ -14,7 +14,8 @@ class ViewQuestion extends Component {
       authedUser: this.props.authedUser, 
       qid, 
       answer: selectedOpt }
-    handleAnswerQuestion(answer)
+      console.log(answer)
+    this.props.dispatch(handleAnswerQuestion(answer))
   }
 
   render() {

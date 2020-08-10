@@ -8,14 +8,16 @@ export default function questions(state={}, action) {
         ...action.questions
       }
     case ANSWER_QUESTION :
+      let updatedQuestion = state[action.answer.qid]
+      updatedQuestion[action.answer.answer].votes.push(action.answer.authedUser)
       return {
         ...state,
-          //users[action.authedUser].answers: { ...state.users[action.authedUser].answers, { action.qid: action.answer } }
+        [action.answer.qid]: updatedQuestion 
       }
     case ADD_QUESTION :
       return {
         ...state,
-        //questions: { ...state.questions, action.question }
+        [action.question.id]: action.question
       }
     default :
       return state

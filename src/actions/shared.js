@@ -25,11 +25,12 @@ export function handleGetQuestions() {
   }
 }
 
-export function handleAnswerQuestion(question) {
+export function handleAnswerQuestion(answer) {
+  console.log(answer)
   return (dispatch)=> {
-    return _saveQuestionAnswer (question)
-      .then((question)=> {
-        dispatch(answerQuestion(question))
+    return _saveQuestionAnswer (answer)
+      .then(()=> {
+        dispatch(answerQuestion(answer))
       })
       .catch(()=> alert('Error. Please try again.'))
   }

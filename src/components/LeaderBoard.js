@@ -7,7 +7,7 @@ class LeaderBoard extends Component {
     let data = []
     for (let i = 0; i < Object.keys(users).length; i++) {
       data.push([
-        users[i].id, 
+        users[i].name, 
         users[i].questions.length, 
         Object.keys(users[i].answers).length,
         users[i].questions.length + Object.keys(users[i].answers).length,
@@ -21,11 +21,11 @@ class LeaderBoard extends Component {
     return (
       <div className='ans-unans'>
         <ol>
-          {this.sortIt(this.props.users).map((user)=> {
+          {this.sortIt(this.props.users).map((user, index)=> {
             return (
               <li key={ user[0]} className='question box'>
                 <div className='hd box'>
-                <p><b>{  }User: { user[0] }</b></p>
+                <p><b>{ index + 1 }{ (index + 1) === 1 ? 'st' : (index + 1) === 2 ? 'nd' : (index + 1) === 3 ? 'rd' : 'th' } place: { user[0] }</b></p>
                 </div>
                 <img className='avatar box' alt='avatar' src={ user[4] } width='100' height='100' />
                 <div className='questxt box centered'>
