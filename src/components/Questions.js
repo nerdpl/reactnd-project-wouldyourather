@@ -14,15 +14,15 @@ class Questions extends Component {
 
   render() {
     return (
-      <div className='q-list'>
-        <ul>{ (this.props.answered === true) 
-          ? <p>Your answered questions: </p> 
-          : <p>Unanswered questions:</p> }
+      <div>
+        <div>{ (this.props.answered === true) 
+          ? <p className='centered'>Answered questions: </p> 
+          : <p className='centered'>Unanswered questions:</p> }
           { this.props.questionsIds
             .filter((q)=> { return this.checkQuestion(this.props.authedUser, this.props.questions[q]) })
-            .map((q)=> { return <li key={ q }><Question id={ q } answered={ this.props.answered } /></li>
+            .map((q)=> { return <div key={ q }><Question id={ q } answered={ this.props.answered } /></div>
           })}
-        </ul>
+        </div>
       </div>
     )
   }

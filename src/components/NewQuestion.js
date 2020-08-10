@@ -18,14 +18,16 @@ class NewQuestion extends Component {
 
   render() {
     return (
-      <div>
-        <p>Would you rather:</p>
-        <form onSubmit={ (e)=> this.handleSubmit(e) }>
-          <input type='text' id='option1'></input>
-          <p>OR</p>
-          <input type='text' id='option2'></input>
-          <p><button>Submit</button></p>
-        </form>
+      <div className='ans-unans'>
+        <div className='centered box new-question'>
+          <p className='bold'>Would you rather:</p>
+          <form onSubmit={ (e)=> this.handleSubmit(e) }>
+            <input type='text' id='option1'></input>
+            <p>OR</p>
+            <input type='text' id='option2'></input>
+            <p><button>Submit</button></p>
+          </form>
+        </div>
       </div>
     )
   }

@@ -17,7 +17,7 @@ class Home extends Component {
       <div>
         <div className='ans-unans'>
           <button type='button' disabled={ !this.state.answered } onClick={ this.toggleTab }>
-            UNANSWERED QUESTION
+            UNANSWERED QUESTIONS
           </button>
           <button type='button' disabled={ this.state.answered } onClick={ this.toggleTab }>
             ANSWERED QUESTIONS
