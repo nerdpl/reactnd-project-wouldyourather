@@ -10,7 +10,6 @@ export function getQuestions(questions) {
 }
 
 export function answerQuestion(answer) {
-  console.log(answer)
   return {
     type: ANSWER_QUESTION,
     answer
@@ -18,7 +17,6 @@ export function answerQuestion(answer) {
 }
 
 export function addQuestion(question) {
-  console.log(question)
   return {
     type: ADD_QUESTION,
     question

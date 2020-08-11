@@ -12,8 +12,8 @@ class NewQuestion extends Component {
       optionOneText,
       optionTwoText
     }
-    console.log(question)
     this.props.dispatch(handleAddQuestion(question))
+    this.props.history.push('/')
   }
 
   render() {

@@ -12,15 +12,27 @@ class Questions extends Component {
     return false
   }
 
+  sortIt = (questionsIds)=> {
+    const filteredList = questionsIds.filter((q)=> { return this.checkQuestion(this.props.authedUser, this.props.questions[q]) })
+    let data = []
+    for (let i = 0; i < Object.keys(filteredList).length; i++) {
+      data.push([
+        this.props.questions[filteredList[i]].id,
+        this.props.questions[filteredList[i]].timestamp
+      ])
+    }
+    const sortedList = data.sort((a, b)=> { return b[1] - a[1] })
+    return sortedList
+  }
+
   render() {
     return (
       <div>
         <div>{ (this.props.answered === true) 
           ? <p className='centered'>Answered questions: </p> 
           : <p className='centered'>Unanswered questions:</p> }
-          { this.props.questionsIds
-            .filter((q)=> { return this.checkQuestion(this.props.authedUser, this.props.questions[q]) })
-            .map((q)=> { return <div key={ q }><Question id={ q } answered={ this.props.answered } /></div>
+          { this.sortIt(this.props.questionsIds)
+            .map((q)=> { return <div key={ q[0] }><Question id={ q[0] } answered={ this.props.answered } /></div>
           })}
         </div>
       </div>
