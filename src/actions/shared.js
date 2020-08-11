@@ -26,11 +26,12 @@ export function handleGetQuestions() {
 }
 
 export function handleAnswerQuestion(answer) {
-  console.log(answer)
   return (dispatch)=> {
+    dispatch(showLoading())
     return _saveQuestionAnswer (answer)
       .then(()=> {
         dispatch(answerQuestion(answer))
+        dispatch(hideLoading())
       })
       .catch(()=> alert('Error. Please try again.'))
   }
@@ -38,9 +39,11 @@ export function handleAnswerQuestion(answer) {
 
 export function handleAddQuestion(question) {
   return (dispatch)=> {
+    dispatch(showLoading())
     return _saveQuestion(question)
       .then((question)=> {
         dispatch(addQuestion(question))
+        dispatch(hideLoading())
       })
       .catch(()=> alert('Error. Please try again.'))
   }
