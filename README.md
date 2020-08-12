@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# "Would You Rather" App
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+* [Project info](#project_info)
+* [List of files](#list_of_files)
+* [Installation](#installation)
+* [Components](#functions)
+* [Other files](#other_files)
 
-### `yarn start`
+## Project_Info
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The subject of the project was to create a React app that uses Redux for state menagement. The app works as a quiz where users can log in, answer, view and create questions. It also has a leaderboard where they can compare their scores.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## List_Of_Files
 
-### `yarn test`
+src\actions\ : authedUser.js , questions.js , shared.js , users.js
+src\components\ : App.js , Home.js , LeaderBoard.js , LoginPage.js , Menu.js , NewQuestion.js , Question.js , Questions.js , ViewQuestion.js
+src\middleware\ : index.js , logger.js
+src\reducers\ : authedUser.js , index.js , questions.js , users.js
+src\utils\ : _DATA.js
+src\ : index.js
+src\ : index.css
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+public\index.html
 
-### `yarn build`
+\package-lock.json
+\package.json
+\README.md
+\yarn.lock
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+"npm install" to install the project.
+"npm start" to start. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Components
 
-### `yarn eject`
+- App.js
+Main application component. Renders LoginPage and Menu. Uses React Router.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Home.js
+Component renders home page, where user can switch between viewing answered and unanswered questions (Questions component). Questions are sorted from the most recent ones.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- LeaderBoard.js
+Creates a leaderboard where users are sorted from the one that has the highest score.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- LoginPage.js
+Component renders a simple login page (without authentification).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Menu.js
+Top menu with access to all the app funcions including logging out.
 
-## Learn More
+- NewQuestion.js
+Renders a form to create a new question. After submition it returns the user to the home page.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Question.js
+Renders a question with two answer options. Depending on if the logged in user already answered the question it shows an "answer" button or a "view results" button. Upon clicking one of those buttons it renders ViewQuestion component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Questions.js
+Component renders a questions list (Question component) depending on the switch buttons a list of unanswered (default) or answered questions.
 
-### Code Splitting
+- ViewQuestion.js
+Shows a question depending on if the logged in user already answered it or not. If the user alredy answered it, it will show statistics and user's chosen option. If the question is still unanswered it enables you to choose an option and submit it.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Other_Files
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- _DATA.js
+Mock API file with initial data and methods to send data. This file was delivered as a startup code.
