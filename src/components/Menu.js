@@ -23,8 +23,14 @@ class Menu extends Component {
         <NavLink to='/leaderboard' exact activeClassName='active'>
           LeaderBoard
         </NavLink>
-        <div>Hello, { user.name } <img src={ user.avatarURL } alt='avatar' width='20' height='20' /></div>
-        <button onClick={(e) => this.logout(e)}>Logout</button>
+        { user 
+          ? <div>Hello, { user.name } <img src={ user.avatarURL } alt='avatar' width='20' height='20' /></div>
+          : ''
+        }  
+        { user
+          ? <button onClick={(e) => this.logout(e)}>Logout</button>
+          : ''
+        }
       </nav>
     )
   }

@@ -15,7 +15,7 @@ The subject of the project was to create a React app that uses Redux for state m
 ## List_Of_Files
 
 src\actions\ : authedUser.js , questions.js , shared.js , users.js
-src\components\ : App.js , Home.js , LeaderBoard.js , LoginPage.js , Menu.js , NewQuestion.js , Question.js , Questions.js , ViewQuestion.js
+src\components\ : App.js , Home.js , LeaderBoard.js , LoginPage.js , Menu.js , NewQuestion.js , NoMatch.js , Question.js , Questions.js , ViewQuestion.js
 src\middleware\ : index.js , logger.js
 src\reducers\ : authedUser.js , index.js , questions.js , users.js
 src\utils\ : _DATA.js
@@ -53,6 +53,9 @@ Top menu with access to all the app funcions including logging out.
 
 - NewQuestion.js
 Renders a form to create a new question. After submition it returns the user to the home page.
+
+- NoMatch.js
+404 page. It is rendered when the user types in non matching URL in the address bar or when the user tries to view the question that doesn't exist.
 
 - Question.js
 Renders a question with two answer options. Depending on if the logged in user already answered the question it shows an "answer" button or a "view results" button. Upon clicking one of those buttons it renders ViewQuestion component.

@@ -13,7 +13,7 @@ class LoginPage extends Component {
     return (
       <div className='centered'>
         <h2>Welcome to</h2>
-        <h1 className='bold animate'>WOULD YOU RATHER APP!</h1>
+        <h1 className='bold animate'>WOULD YOU RATHER...?</h1>
         <h3>Please log in:</h3>
         <form onSubmit={ this.login }>
           <select id='userList' name='User list'>

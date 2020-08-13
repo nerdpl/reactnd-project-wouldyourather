@@ -12,8 +12,11 @@ class NewQuestion extends Component {
       optionOneText,
       optionTwoText
     }
-    this.props.dispatch(handleAddQuestion(question))
-    this.props.history.push('/')
+    if ((optionOneText !== optionTwoText) && (optionOneText !== '') && (optionTwoText !== '')) {
+      this.props.dispatch(handleAddQuestion(question))
+      this.props.history.push('/')
+    }
+    else alert('The options cannot be empty or equal. Please try again.')
   }
 
   render() {

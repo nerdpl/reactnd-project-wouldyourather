@@ -9,7 +9,8 @@ import Menu from './Menu'
 import NewQuestion from './NewQuestion'
 import { setAuthedUser } from '../actions/authedUser'
 import LoadingBar from 'react-redux-loading'
-import { BrowserRouter, Route } from 'react-router-dom' 
+import { BrowserRouter, Route, Switch } from 'react-router-dom' 
+import NoMatch from './NoMatch'
 
 class App extends Component {
   componentDidMount() {
@@ -23,14 +24,18 @@ class App extends Component {
         <Fragment>
           { (this.props.authedUser !== '' && this.props.authedUser !== null)
             ? ( <div>
-          <LoadingBar />
-          <Menu />
-          <Route path='/' exact component={ Home } />
-          <Route path='/login' exact component={ LoginPage } />
-          <Route path='/new' exact component={ NewQuestion } />
-          <Route path='/question/:id' component={ ViewQuestion } />
-          <Route path='/leaderboard' exact component={ LeaderBoard } /></div>)
-            : <div><LoginPage /></div> }
+              <LoadingBar />
+              <Menu />
+              <Switch>
+                <Route path='/' exact component={ Home } />
+                <Route path='/login' exact component={ LoginPage } />
+                <Route path='/new' exact component={ NewQuestion } />
+                <Route path='/question/:id' component={ ViewQuestion } />
+                <Route path='/leaderboard' exact component={ LeaderBoard } />
+                <Route path='/404' exact component={ NoMatch } />
+                <Route component={ NoMatch } />
+              </Switch></div>)
+            : <div><Menu /><LoginPage /></div> }
         </Fragment>
       </BrowserRouter>
     )
